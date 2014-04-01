@@ -1,0 +1,100 @@
+(which-function-mode 1)
+;;(setq-default truncate-lines t)
+;;(put 'downcase-region 'disabled nil)
+(add-to-list 'auto-mode-alist '("*.f" . fortran-mode))
+
+;; ;; package mode for marmalade
+;; (require 'package)
+;; (add-to-list 'package-archives
+;;     '("marmalade" .
+;;       "http://marmalade-repo.org/packages/"))
+;; (package-initialize)
+
+;; (add-to-list 'package-archives
+;;              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+;; Windows Cycling
+(defun windmove-up-cycle()
+  (interactive)
+  (condition-case nil (windmove-up)
+    (error (condition-case nil (windmove-down)
+         (error (condition-case nil (windmove-right) (error (condition-case nil (windmove-left) (error (windmove-up))))))))))
+
+(defun windmove-down-cycle()
+  (interactive)
+  (condition-case nil (windmove-down)
+    (error (condition-case nil (windmove-up)
+         (error (condition-case nil (windmove-left) (error (condition-case nil (windmove-right) (error (windmove-down))))))))))
+
+(defun windmove-right-cycle()
+  (interactive)
+  (condition-case nil (windmove-right)
+    (error (condition-case nil (windmove-left)
+         (error (condition-case nil (windmove-up) (error (condition-case nil (windmove-down) (error (windmove-right))))))))))
+
+(defun windmove-left-cycle()
+  (interactive)
+  (condition-case nil (windmove-left)
+    (error (condition-case nil (windmove-right)
+         (error (condition-case nil (windmove-down) (error (condition-case nil (windmove-up) (error (windmove-left))))))))))
+
+(global-set-key (kbd "C-x <up>") 'windmove-up-cycle)
+(global-set-key (kbd "C-x <down>") 'windmove-down-cycle)
+(global-set-key (kbd "C-x <right>") 'windmove-right-cycle)
+(global-set-key (kbd "C-x <left>") 'windmove-left-cycle)
+
+
+
+;; (defun frame-bck()
+;;   (interactive)
+;;   (other-window-or-frame -1)
+;; )
+;; (define-key (current-global-map) (kbd "M-o") 'other-window-or-frame)
+;; (define-key (current-global-map) (kbd "M-O") 'frame-bck)
+
+
+;; ;;
+;;  ;; Adds stuff to my PATH (LaTeX, etc)
+;; (setenv "PATH" (concat (getenv "PATH") ":/usr/texbin"))
+;; (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+
+;;  ;; Set the default LaTeX exec to pdfTeX
+;; (setq TeX-PDF-mode t)
+
+;;  ;; Load AucTeX!! :D
+;; (load "auctex.el" nil t t) ;; loads tex-site in such a way so that it can be undone
+;; (load "preview-latex.el" nil t t) ;; actual preview-latex
+
+;;  ;; Sets the default PDF viewer to, well, the default PDF viewer.
+;; (setq TeX-view-program-list '(("Shell Default" "open %o")))
+;; (setq TeX-view-program-selection '((output-pdf "Shell Default")))
+;; (custom-set-variables
+;;  ;; custom-set-variables was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  )
+;; (custom-set-faces
+;;  ;; custom-set-faces was added by Custom.
+;;  ;; If you edit it by hand, you could mess it up, so be careful.
+;;  ;; Your init file should contain only one such instance.
+;;  ;; If there is more than one, they won't work right.
+;;  )
+
+
+;; ;; emacs gui run from command hack
+;; (x-focus-frame nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(send-mail-function (quote smtpmail-send-it))
+ '(smtpmail-smtp-server "smtp.gmail.com")
+ '(smtpmail-smtp-service 25))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

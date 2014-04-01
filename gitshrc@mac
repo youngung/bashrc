@@ -1,0 +1,18 @@
+# git-sh rc original remain in below:
+
+export PATH=/usr/local/bin:/usr/libexec/git-core:/usr/local/share/python:/bin:/usr/sbin:/sbin:/usr/bin:/usr/X11/bin
+alias ls='ls -G'
+alias ll='ls -G -l'
+alias tree='tree -C'
+alias tre='tree -C -d'
+alias grep='grep --color=auto'
+alias cp='cp -v'
+alias mv='mv -v'
+alias rm='rm -v'
+alias ipython='ipython --pylab=tk'
+
+# added by Anaconda 1.8.0 installer
+export PATH="/Users/yj/anaconda/bin:$PATH"
+
+
+if [ "$WINDOWS$" ]; then PS1="$PS1$WINDOW>> "; fi

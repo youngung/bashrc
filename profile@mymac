@@ -1,0 +1,36 @@
+#export PATH=/usr/local/share/python:/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/bin:/usr/X11/bin
+export PATH=/usr/local/bin:/bin:/usr/sbin:/sbin:/usr/bin:/usr/X11/bin:/usr/texbin:/usr/local/sbin
+alias ls='ls -G'
+alias ll='ls -G -l'
+alias tree='tree -C'
+alias tre='tree -C -d'
+alias grep='grep --color=auto'
+alias cp='cp -v'
+alias mv='mv -v'
+alias rm='rm -v'
+alias ipy='ipython --pylab=tk'
+alias ipyn='ipython notebook --pylab=inline'
+
+alias rm='rmtrash'
+
+#PS1='\[\033[0;31m\]\u@\h\[\033[0;34m\] \W \$\[\033[00m\] '
+PS1='\[\033[0;32m\]\u@\h\[\033[01;36m\] [\w] \033[0;36m\]\$\[\033[00m\] '
+
+#to give number to each screen window
+PS1="\[\033[0;32m\]\u@\h\[\033[01;36m\]"
+if [ "$WINDOWS$" ]; then PS1="$PS1 $WINDOW"; fi
+PS1="$PS1 [\W] \033[0;36m\]\$\[\033[00m\] "
+
+
+
+#export XAPPLRESDIR=/Users/yj/Util/ddd-3.3.12-test2/ddd/
+#export DDD_HOME=/Users/yj/Util/ddd-3.3.12-test2/ddd/ddd
+
+
+# Set default editor
+export EDITOR=/usr/local/bin/emacs
+
+
+# added by Anaconda 1.8.0 installer
+export PATH="/Users/yj/anaconda/bin:$PATH"
+export PATH='/usr/local/share/python:$PATH'

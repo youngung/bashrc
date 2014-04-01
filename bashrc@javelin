@@ -99,7 +99,7 @@ export PATH="/users/ynj/bin:$PATH"
 ## alias
 alias emacs='emacs -nw'
 alias ls='ls --color'
-alias tree='tree -C'
+alias tree='tree -d'
 alias grep='grep --color=auto'
 alias cp='cp -v'
 alias mv='mv -v'

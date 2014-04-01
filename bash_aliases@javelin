@@ -1,0 +1,56 @@
+alias mroe=more
+# Changes the label on the title bar
+function titlebar()
+{
+    echo -ne "\e]2;$*\07"
+}
+# Changes the label on the icon
+function icontitle()
+{
+    echo -ne "\e]1;$*\07"
+}
+alias addroot="su root -c '/usr/local/bin/ssh-add /root/.ssh/id_dsa /root/.ssh/identity'"
+alias rxbiff='ssh -f lurch xbiff'
+alias ls='ls -CF'
+alias ll='ls -l'
+alias ftp='ftp -i'
+alias lp3='telnet dartmud.com 2525'
+alias psu='ps -u roosen'
+alias h='history'
+alias lock='xlock -mode random -timeout 30'
+alias night='xlock -mode blank -timeout 30'
+alias mail='mutt'
+alias vt100='xwsh -vt100'
+alias timecard='w3m -F http://www-i.metallurgy.nist.gov/timecards/timecard.nclk'
+alias emacs='emacs -nw'
+
+function em()
+{
+    emacs $* &
+}
+alias gnus='emacs -f gnus -geometry 80x60&'
+alias mailwin='icontitle Mail; titlebar Mail; mutt'
+function loadpass()
+{
+    while [ -z "$GPGPASSPHRASE" ]
+    do
+	read -s -p "Passphrase: " GPGPASSPHRASE
+	echo
+	# Check the validity of the passphrase before continuing
+        echo $GPGPASSPHRASE | \
+           gpg -s --passphrase-fd 0 -o /dev/null /dev/null > /dev/null 2>&1\
+        || \
+           GPGPASSPHRASE=""
+    done
+}
+
+function hide()
+{
+    gpg -e -r roosen $1
+    rm -f $1
+}
+function show()
+{
+    loadpass
+    echo $GPGPASSPHRASE | gpg --passphrase-fd 0 -d $1 
+}

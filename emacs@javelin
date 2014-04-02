@@ -1,3 +1,6 @@
+(which-function-mode 1)
+(add-to-list 'auto-mode-alist '("*.f" . fortran-mode))
+
 (defun windmove-up-cycle()
   (interactive)
   (condition-case nil (windmove-up)

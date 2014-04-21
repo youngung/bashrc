@@ -2,3 +2,13 @@ shell -$SHELL
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %m/%d %C%a "
 escape ^tt
 defscrollback 20000
+
+
+# assign initial windows
+screen -t "ipython" 0
+screen -t "emacs coding" 1
+screen -t "htop" 9
+
+
+# caption
+caption always "${= Wk}%-w%{= Bw}%n %t%{-}%+w %-="
